@@ -3,6 +3,7 @@ Offical PyTorch implement of paper:Prototype Knowledge Distillation for Medical 
 [arXiv](https://arxiv.org/abs/2303.09830)
 
 ## Dependencies
+
 ```
 torch
 numpy

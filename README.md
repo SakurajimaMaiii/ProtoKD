@@ -18,27 +18,37 @@ tqdm (only used in evaluate.py)
 
 ## Dataset
 Please download BraTS2018 training set from [here](http://braintumorsegmentation.org/).
-For preprocessing, please change `path` and `outputs` in `preprocess.py`, and
+For preprocessing, please change `path` in `preprocess.py`, and
 ```
 python preprocess.py
+```
+the preprocessed data will be organzied as:
+```
+--code
+--data
+  --brats2018
+    --Brats18_2013_0_1.npy
+  --train_list.txt
+  --val_list.txt
+  --test_list.txt
 ```
 ## Training
 First, train a teacher model
 ```
-python pretrain.py --log_dir your_dir --data_dir your_data_dir
+python pretrain.py --log_dir ../log/teachermodel
 ```
 For baseline (unimodal in paper),
 ```
-python train_baseline.py --log_dir your_dir --data_dir your_data_dir --modality 0
+python train_baseline.py --log_dir ../log/unimodal_modality0 --modality 0
 ```
 where modality=0,1,2,3 denotes using T1/T2/T1ce/Falir images for training.  
-For ProtoKD (our method) (you may need to change `teachermodel_path` and `data_dir` in `config.py`)
+For ProtoKD (our method)
 ```
-python train_protokd.py --modality 0 --log_dir your_dir
+python train_protokd.py --modality 0 --log_dir ../log/protokd_modality0
 ```
 ## Test
 ```
-python evaluate.py --data_dir your_data_dir --model_path your_model_path --test_modality 0 --output_path your_out_path
+python evaluate.py --model_path ../log/protokd_modality0/model/best_model.pth --test_modality 0 --output_path protokd_modality0_outputs
 ```
 If you want to save visualization results, please set:
 ```

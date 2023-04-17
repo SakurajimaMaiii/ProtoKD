@@ -20,7 +20,7 @@ tqdm (only used in evaluate.py)
 
 ## Dataset
 Please download BraTS2018 training set from [here](http://braintumorsegmentation.org/).
-For preprocessing, please change `path` in `preprocess.py`, and
+For preprocessing, please change `path` (Line35) in `preprocess.py`, and
 ```
 python preprocess.py
 ```
@@ -28,7 +28,7 @@ the preprocessed data will be organzied as:
 ```
 --code
 --data
-  --brats2018
+  --brats2018  ##pre-processed data, npy format
     --Brats18_2013_0_1.npy
   --train_list.txt
   --val_list.txt

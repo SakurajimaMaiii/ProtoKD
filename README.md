@@ -1,6 +1,6 @@
 # ProtoKD
 This repo includes:  
-1.PyTorch official implementation of Prototype Knowledge Distillation for Medical Segmentation with Missing Modality  
+1. PyTorch official implementation of Prototype Knowledge Distillation for Medical Segmentation with Missing Modality  
 by Shuai Wang, Zipei Yan, Daoan Zhang, Haining Wei, Zhongsen Li, Rui Li.  
 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2023).  
 [arXiv](https://arxiv.org/abs/2303.09830)  
@@ -68,6 +68,7 @@ If this code or ProtoKD is useful for your research, please consider citing our 
 }
 ```
 ## Papers of missing modality in medical image segmentation
-* Knowledge distillation from multi-modal to mono-modal segmentation networks, MICCAI 2020 [arXiv](https://arxiv.org/abs/2106.09564)  
-* Learning with Privileged Multimodal Knowledge for Unimodal Segmentation, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675) [code](https://github.com/cchen-cc/PMKL)  
-* 
+* Knowledge distillation from multi-modal to mono-modal segmentation networks, MICCAI 2020, [arXiv](https://arxiv.org/abs/2106.09564)  
+* Learning with Privileged Multimodal Knowledge for Unimodal Segmentation, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/cchen-cc/PMKL)  
+* D2-Net: Dual Disentanglement Network for Brain Tumor Segmentation with Missing Modalities, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/CityU-AIM-Group/D2Net)  
+* mmFormer: Multimodal Medical Transformer for Incomplete Multimodal Learning of Brain Tumor Segmentation, MICCAI 2022, [arXiv](https://arxiv.org/abs/2206.02425), [code](https://github.com/YaoZhang93/mmFormer)

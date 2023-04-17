@@ -11,14 +11,14 @@ medpy
 SimpleITK
 tensorboard
 tqdm (only used in evaluate.py)
-'''
+```
 
 ## Dataset
 Please download BraTS2018 training set from [here](http://braintumorsegmentation.org/).
-For preprocessing, please change `path' and `outputs' in `preprocess.py', and
+For preprocessing, please change `path' and `outputs' in `preprocess.py`, and
 ```
 python preprocess.py
-'''
+```
 ## Training
 First, train a teacher model
 ```

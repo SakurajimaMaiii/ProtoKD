@@ -60,11 +60,16 @@ If you want to save visualization results (`nii.gz` format, you can open it usin
 ## Citation
 If this code or ProtoKD is useful for your research, please consider citing our paper:
 ```
-@article{wang2023prototype,
-  title={Prototype Knowledge Distillation for Medical Segmentation with Missing Modality},
-  author={Wang, Shuai and Yan, Zipei and Zhang, Daoan and Wei, Haining and Li, Zhongsen and Li, Rui},
-  journal={arXiv preprint arXiv:2303.09830},
-  year={2023}
+@inproceedings{Wang2023,
+  doi = {10.1109/icassp49357.2023.10095014},
+  url = {https://doi.org/10.1109/icassp49357.2023.10095014},
+  year = {2023},
+  month = jun,
+  publisher = {{IEEE}},
+  author = {Shuai Wang and Zipei Yan and Daoan Zhang and Haining Wei and Zhongsen Li and Rui Li},
+  title = {Prototype Knowledge Distillation for Medical Segmentation with Missing Modality},
+  booktitle = {{ICASSP} 2023 - 2023 {IEEE} International Conference on Acoustics,  Speech and Signal Processing ({ICASSP})}
+}
 }
 ```
 ## Papers of missing modality in medical image segmentation

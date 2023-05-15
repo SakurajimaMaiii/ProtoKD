@@ -70,7 +70,6 @@ If this code or ProtoKD is useful for your research, please consider citing our 
   title = {Prototype Knowledge Distillation for Medical Segmentation with Missing Modality},
   booktitle = {{ICASSP} 2023 - 2023 {IEEE} International Conference on Acoustics,  Speech and Signal Processing ({ICASSP})}
 }
-}
 ```
 ## Papers of missing modality in medical image segmentation
 We collected some papers about missing modality in medical image segmentation, this may help people who are interested in this topic.

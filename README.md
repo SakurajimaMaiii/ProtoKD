@@ -1,9 +1,9 @@
 # ProtoKD
 This repo includes:  
-1. PyTorch official implementation of Prototype Knowledge Distillation for Medical Segmentation with Missing Modality  
+1. PyTorch official implementation of __Prototype Knowledge Distillation for Medical Segmentation with Missing Modality__  
 by Shuai Wang, Zipei Yan, Daoan Zhang, Haining Wei, Zhongsen Li, Rui Li.  
 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2023).  
-[arXiv](https://arxiv.org/abs/2303.09830)  
+[arXiv](https://arxiv.org/abs/2303.09830), [IEEE](https://ieeexplore.ieee.org/abstract/document/10095014)  
 2. Paper collection of missing modality in medical image segmentation.
 
 ## Dependencies

@@ -52,7 +52,7 @@ python train_protokd.py --modality 0 --log_dir ../log/protokd_modality0
 ```
 python evaluate.py --model_path ../log/protokd_modality0/model/best_model.pth --test_modality 0 --output_path protokd_modality0_outputs
 ```
-If you want to save visualization results (`nii.gz` format, you can open it using ITK-Snap or 3D-slicer), please set:
+If you want to save visualization results (`nii.gz` format, you can open it using [ITK-Snap](http://www.itksnap.org/pmwiki/pmwiki.php) or [3D-slicer](https://www.slicer.org/)), please set:
 ```
 --save_vis
 ```

@@ -65,7 +65,6 @@ If you want to save visualization results (`nii.gz` format, you can open it usin
 ## Models
 We provide models for teacher, baseline T1, protokd T1 in [Google Drive](https://drive.google.com/drive/folders/1DhCBMn5Z002TzsfRwFzu_pvXjYc4BoCn?usp=sharing).
 
-
 ## Citation
 If this code or ProtoKD is useful for your research, please consider citing our paper:
 ```
@@ -78,6 +77,9 @@ If this code or ProtoKD is useful for your research, please consider citing our 
   booktitle = {{ICASSP} 2023 - 2023 {IEEE} International Conference on Acoustics,  Speech and Signal Processing ({ICASSP})}
 }
 ```
+
+## Contact
+If you have any question, please contact bit.ybws@gmail.com
 ## Papers of missing modality in medical image segmentation
 We collected some papers about missing modality in medical image segmentation, this may help people who are interested in this topic.
 * Learning with Privileged Multimodal Knowledge for Unimodal Segmentation, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/cchen-cc/PMKL)  

@@ -62,7 +62,8 @@ If you want to save visualization results (`nii.gz` format, you can open it usin
 ## Results
 ![results](https://github.com/SakurajimaMaiii/ProtoKD/assets/83657651/e5febfb8-8a3d-4b09-a69c-0bfb6fe0fc69)
 
-
+## Models
+We provide models for teacher, baseline T1, protokd T1 in [Google Drive](https://drive.google.com/drive/folders/1DhCBMn5Z002TzsfRwFzu_pvXjYc4BoCn?usp=sharing).
 
 
 ## Citation

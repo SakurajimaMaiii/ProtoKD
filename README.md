@@ -1,13 +1,13 @@
 # ProtoKD
 This repo includes:  
 1. PyTorch official implementation of __Prototype Knowledge Distillation for Medical Segmentation with Missing Modality__  
-by Shuai Wang, Zipei Yan, Daoan Zhang, Haining Wei, Zhongsen Li, Rui Li.  
+by __Shuai Wang__, [__Zipei Yan__](https://scholar.google.com/citations?user=JZvRMrcAAAAJ&hl=en&oi=ao), [__Daoan Zhang__](https://dwan.ch/), __Haining Wei__, __Zhongsen Li__, [__Rui Li__](https://scholar.google.com/citations?user=zTByNnsAAAAJ&hl=en&oi=ao).  
 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2023).  
-[arXiv](https://arxiv.org/abs/2303.09830), [IEEE](https://ieeexplore.ieee.org/abstract/document/10095014)  
+[__arXiv__](https://arxiv.org/abs/2303.09830), [__IEEE__](https://ieeexplore.ieee.org/abstract/document/10095014)  
 2. Paper collection of missing modality in medical image segmentation.
 
+## Overview
 ![Methods](https://github.com/SakurajimaMaiii/ProtoKD/assets/83657651/2684dae8-241d-45cd-b264-b6d2592219fc)
-
 
 ## Dependencies
 
@@ -18,7 +18,7 @@ numpy
 medpy
 SimpleITK
 tensorboard
-tqdm (only used in evaluate.py)
+tqdm #(only used in evaluate.py)
 ```
 
 ## Dataset

@@ -95,3 +95,8 @@ We collected some papers about missing modality in medical image segmentation, t
 * SMU-Net: Style matching U-Net for brain tumor segmentation with missing modalities, [arXiv](https://arxiv.org/abs/2204.02961)  
 * Learning Cross-Modality Representations From Multi-Modal Images, [IEEE TMI 2018](https://ieeexplore.ieee.org/document/8456579)  
 * Multi-Domain Image Completion for Random Missing Input Data, [IEEE TMI 2020](https://ieeexplore.ieee.org/abstract/document/9302720)
+* Medical Image Segmentation on MRI Images with Missing Modalities: A Review, [arXiv 2022](https://arxiv.org/abs/2203.06217)
+* Disentangle First, Then Distill: A Unified Framework for Missing Modality Imputation and Alzheimer’s Disease Diagnosis, [IEEE TMI 2023](https://ieeexplore.ieee.org/abstract/document/10184044)
+* Discrepancy and Gradient-Guided Multi-modal Knowledge Distillation for Pathological Glioma Grading, [MICCAI 2022](https://link.springer.com/chapter/10.1007/978-3-031-16443-9_61), [code](https://github.com/CityU-AIM-Group/MultiModal-learning)
+* Gradient modulated contrastive distillation of low-rank multi-modal knowledge for disease diagnosis, [Medical Image Analysis 2023](https://www.sciencedirect.com/science/article/abs/pii/S1361841523001342)
+* M3AE: Multimodal Representation Learning for Brain Tumor Segmentation with Missing Modalities, [arXiv 2023](https://arxiv.org/abs/2303.05302), [code](https://github.com/ccarliu/m3ae)  

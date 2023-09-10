@@ -80,8 +80,8 @@ If this code or ProtoKD is useful for your research, please consider citing our 
 
 ## Contact
 If you have any question, please contact bit.ybws@gmail.com
-## Papers of missing modality in medical image segmentation
-We collected some papers with about missing modality in medical image segmentation, which may help people who are interested in this topic. Papers with public code are __highlighted__.
+## 📜 Papers of missing modality in medical image segmentation
+We collected some papers with about missing modality in medical image segmentation, which may help people who are interested in this topic. Papers with public code are __highlighted__. If I miss some important papers, feel free to tell me.
 * __Learning with Privileged Multimodal Knowledge for Unimodal Segmentation, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/cchen-cc/PMKL)__  
 * __D2-Net: Dual Disentanglement Network for Brain Tumor Segmentation with Missing Modalities, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/CityU-AIM-Group/D2Net)__ 
 * __mmFormer: Multimodal Medical Transformer for Incomplete Multimodal Learning of Brain Tumor Segmentation, MICCAI 2022, [arXiv](https://arxiv.org/abs/2206.02425), [code](https://github.com/YaoZhang93/mmFormer)__

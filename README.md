@@ -10,17 +10,15 @@ IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASS
 ![Methods](https://github.com/SakurajimaMaiii/ProtoKD/assets/83657651/2684dae8-241d-45cd-b264-b6d2592219fc)
 
 ## Dependencies
-
 ```
-python
-torch
-numpy
-medpy
-SimpleITK
-tensorboard
-tqdm #(only used in evaluate.py)
+python==3.8.13
+torch==1.12.0
+numpy==1.22.3
+medpy==0.4.0
+simpleitk==2.2.1
+tensorboard==2.12.0
+tqdm==4.65.0
 ```
-
 ## Dataset
 Please download BraTS2018 training set from [here](http://braintumorsegmentation.org/).
 For preprocessing, please change `path` (Line35) in `preprocess.py`, and

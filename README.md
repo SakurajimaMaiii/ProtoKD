@@ -20,7 +20,7 @@ tensorboard==2.12.0
 tqdm==4.65.0
 ```
 ## Dataset
-Please download BraTS2018 training set from [here](http://braintumorsegmentation.org/).
+Please download BraTS2018 training set from [here](https://www.med.upenn.edu/sbia/brats2018.html).
 For preprocessing, please change `path` (Line35) in `preprocess.py`, and
 ```
 python preprocess.py

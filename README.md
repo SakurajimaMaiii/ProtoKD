@@ -79,7 +79,7 @@ If this code or ProtoKD is useful for your research, please consider citing our 
 ## Contact
 If you have any question, please contact bit.ybws@gmail.com
 ## 📜 Papers of missing modality in medical image analysis
-We collected some papers with about missing modality in medical image segmentation, which may help people who are interested in this topic. Papers with public code are __highlighted__. If I miss some important papers, feel free to tell me.
+We collected some papers about missing modality in medical image analysis, which may help people who are interested in this topic. Papers with public code are __highlighted__. If I miss some important papers, feel free to tell me.
 * __Learning with Privileged Multimodal Knowledge for Unimodal Segmentation, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/cchen-cc/PMKL)__  
 * __D2-Net: Dual Disentanglement Network for Brain Tumor Segmentation with Missing Modalities, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/CityU-AIM-Group/D2Net)__ 
 * __mmFormer: Multimodal Medical Transformer for Incomplete Multimodal Learning of Brain Tumor Segmentation, MICCAI 2022, [arXiv](https://arxiv.org/abs/2206.02425), [code](https://github.com/YaoZhang93/mmFormer)__
@@ -97,4 +97,5 @@ We collected some papers with about missing modality in medical image segmentati
 * Disentangle First, Then Distill: A Unified Framework for Missing Modality Imputation and Alzheimer’s Disease Diagnosis, [IEEE TMI 2023](https://ieeexplore.ieee.org/abstract/document/10184044)
 * __Discrepancy and Gradient-Guided Multi-modal Knowledge Distillation for Pathological Glioma Grading, [MICCAI 2022](https://link.springer.com/chapter/10.1007/978-3-031-16443-9_61), [code](https://github.com/CityU-AIM-Group/MultiModal-learning)__
 * Gradient modulated contrastive distillation of low-rank multi-modal knowledge for disease diagnosis, [Medical Image Analysis 2023](https://www.sciencedirect.com/science/article/abs/pii/S1361841523001342)
-* __M3AE: Multimodal Representation Learning for Brain Tumor Segmentation with Missing Modalities, [arXiv 2023](https://arxiv.org/abs/2303.05302), [code](https://github.com/ccarliu/m3ae)__  
+* __M3AE: Multimodal Representation Learning for Brain Tumor Segmentation with Missing Modalities, [arXiv 2023](https://arxiv.org/abs/2303.05302), [code](https://github.com/ccarliu/m3ae)__
+* __Fundus-Enhanced Disease-Aware Distillation Model for Retinal Disease Classification from OCT Images, MICCAI 2023 [arXiv](https://arxiv.org/abs/2308.00291), [code](https://github.com/xmed-lab/FDDM)__

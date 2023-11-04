@@ -7,7 +7,7 @@ IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASS
 2. Paper collection of missing modality in medical image segmentation.
 
 ## Overview
-![Methods](https://github.com/SakurajimaMaiii/ProtoKD/assets/83657651/2684dae8-241d-45cd-b264-b6d2592219fc)
+![Methods](/figures/framework.png)
 
 ## Dependencies
 ```
@@ -58,7 +58,7 @@ If you want to save visualization results (`nii.gz` format, you can open it usin
 --save_vis
 ```
 ## Results
-![results](https://github.com/SakurajimaMaiii/ProtoKD/assets/83657651/e5febfb8-8a3d-4b09-a69c-0bfb6fe0fc69)
+![results](/figures/results.png)
 
 ## Models
 We provide models for teacher, baseline T1, protokd T1 in [Google Drive](https://drive.google.com/drive/folders/1DhCBMn5Z002TzsfRwFzu_pvXjYc4BoCn?usp=sharing).

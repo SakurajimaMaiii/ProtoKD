@@ -13,9 +13,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from networks import VNet,MLP
+from networks import VNet
 from datasets import BraTS
-from loss import DiceCeLoss,softmax_kl_loss,prototype_loss,contrastive_loss,kd_loss
+from loss import DiceCeLoss,softmax_kl_loss,prototype_loss
 from evaluate import eval_one_dice,test_single_case
 from utils import create_if_not
 

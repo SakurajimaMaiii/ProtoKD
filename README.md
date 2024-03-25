@@ -74,11 +74,9 @@ If this code or ProtoKD is useful for your research, please consider citing our 
 ```
 @inproceedings{Wang2023,
   year = {2023},
-  month = jun,
-  publisher = {{IEEE}},
   author = {Shuai Wang and Zipei Yan and Daoan Zhang and Haining Wei and Zhongsen Li and Rui Li},
   title = {Prototype Knowledge Distillation for Medical Segmentation with Missing Modality},
-  booktitle = {{ICASSP} 2023 - 2023 {IEEE} International Conference on Acoustics,  Speech and Signal Processing ({ICASSP})}
+  booktitle = {ICASSP}
 }
 ```
 

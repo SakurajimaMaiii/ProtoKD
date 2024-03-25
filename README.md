@@ -23,6 +23,7 @@ tqdm==4.65.0
 Please download BraTS2018 training set from [here](https://www.med.upenn.edu/sbia/brats2018.html).
 For preprocessing, please change `path` (Line35) in `preprocess.py`, and
 ```
+cd code/
 python preprocess.py
 ```
 the preprocessed data will be organzied as:
@@ -51,16 +52,21 @@ python train_protokd.py --modality 0 --log_dir ../log/protokd_modality0
 ```
 ## Test
 ```
-python evaluate.py --model_path ../log/protokd_modality0/model/best_model.pth --test_modality 0 --output_path protokd_modality0_outputs
+python evaluate.py --model_path ../log/protokd_modality0/model/best_model.pth \
+                   --test_modality 0 \
+                   --output_path protokd_modality0_outputs
 ```
-If you want to save visualization results (`nii.gz` format, you can open it using [ITK-Snap](http://www.itksnap.org/pmwiki/pmwiki.php) or [3D-slicer](https://www.slicer.org/)), please set:
+If you want to save visualization results (`nii.gz` format, you can open it using [ITK-Snap](http://www.itksnap.org/pmwiki/pmwiki.php) or [3D-slicer](https://www.slicer.org/)), please add `--save_vis`.
 ```
---save_vis
+python evaluate.py --model_path ../log/protokd_modality0/model/best_model.pth \
+                   --test_modality 0 \
+                   --output_path protokd_modality0_outputs \
+                   --save_vis
 ```
 ## Results
 ![results](/figures/results.png)
 
-## Models
+## Pretrained models
 We provide models for teacher, baseline T1, protokd T1 in [Google Drive](https://drive.google.com/drive/folders/1DhCBMn5Z002TzsfRwFzu_pvXjYc4BoCn?usp=sharing).
 
 ## Citation

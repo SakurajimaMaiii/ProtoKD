@@ -71,7 +71,7 @@ We provide models for teacher, baseline T1, protokd T1 in [Google Drive](https:/
 
 ## Citation
 If this code or ProtoKD is useful for your research, please consider citing our paper:
-```
+```bibtex
 @inproceedings{Wang2023,
   year = {2023},
   author = {Shuai Wang and Zipei Yan and Daoan Zhang and Haining Wei and Zhongsen Li and Rui Li},

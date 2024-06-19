@@ -2,25 +2,28 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
+
 class ConvBlock(nn.Module):
-    def __init__(self, n_stages, n_filters_in, n_filters_out, normalization='none'):
+    def __init__(self, n_stages, n_filters_in, n_filters_out, normalization="none"):
         super(ConvBlock, self).__init__()
 
         ops = []
         for i in range(n_stages):
-            if i==0:
+            if i == 0:
                 input_channel = n_filters_in
             else:
                 input_channel = n_filters_out
 
-            ops.append(nn.Conv3d(input_channel, n_filters_out, 3, padding=1,bias=False))
-            if normalization == 'batchnorm':
+            ops.append(
+                nn.Conv3d(input_channel, n_filters_out, 3, padding=1, bias=False)
+            )
+            if normalization == "batchnorm":
                 ops.append(nn.BatchNorm3d(n_filters_out))
-            elif normalization == 'groupnorm':
+            elif normalization == "groupnorm":
                 ops.append(nn.GroupNorm(num_groups=16, num_channels=n_filters_out))
-            elif normalization == 'instancenorm':
+            elif normalization == "instancenorm":
                 ops.append(nn.InstanceNorm3d(n_filters_out))
-            elif normalization != 'none':
+            elif normalization != "none":
                 assert False
             ops.append(nn.ReLU(inplace=True))
 
@@ -31,26 +34,23 @@ class ConvBlock(nn.Module):
         return x
 
 
-
-
 class MLP(nn.Module):
-    def __init__(self,input_dim=16,feat_dim=16):
+    def __init__(self, input_dim=16, feat_dim=16):
         super().__init__()
         layer = []
-        layer.append(nn.Linear(input_dim,2*feat_dim))
+        layer.append(nn.Linear(input_dim, 2 * feat_dim))
         layer.append(nn.ReLU(inplace=True))
-        layer.append(nn.Linear(2*feat_dim,feat_dim))
+        layer.append(nn.Linear(2 * feat_dim, feat_dim))
         self.layer = nn.Sequential(*layer)
-    
-    def forward(self,x):
+
+    def forward(self, x):
         x = self.layer(x)
-        x = F.normalize(x,p=2.0,dim=1)
+        x = F.normalize(x, p=2.0, dim=1)
         return x
 
 
-
 class ResidualConvBlock(nn.Module):
-    def __init__(self, n_stages, n_filters_in, n_filters_out, normalization='none'):
+    def __init__(self, n_stages, n_filters_in, n_filters_out, normalization="none"):
         super(ResidualConvBlock, self).__init__()
 
         ops = []
@@ -61,44 +61,48 @@ class ResidualConvBlock(nn.Module):
                 input_channel = n_filters_out
 
             ops.append(nn.Conv3d(input_channel, n_filters_out, 3, padding=1))
-            if normalization == 'batchnorm':
+            if normalization == "batchnorm":
                 ops.append(nn.BatchNorm3d(n_filters_out))
-            elif normalization == 'groupnorm':
+            elif normalization == "groupnorm":
                 ops.append(nn.GroupNorm(num_groups=16, num_channels=n_filters_out))
-            elif normalization == 'instancenorm':
+            elif normalization == "instancenorm":
                 ops.append(nn.InstanceNorm3d(n_filters_out))
-            elif normalization != 'none':
+            elif normalization != "none":
                 assert False
 
-            if i != n_stages-1:
+            if i != n_stages - 1:
                 ops.append(nn.ReLU(inplace=True))
 
         self.conv = nn.Sequential(*ops)
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
-        x = (self.conv(x) + x)
+        x = self.conv(x) + x
         x = self.relu(x)
         return x
 
 
 class DownsamplingConvBlock(nn.Module):
-    def __init__(self, n_filters_in, n_filters_out, stride=2, normalization='none'):
+    def __init__(self, n_filters_in, n_filters_out, stride=2, normalization="none"):
         super(DownsamplingConvBlock, self).__init__()
 
         ops = []
-        if normalization != 'none':
-            ops.append(nn.Conv3d(n_filters_in, n_filters_out, stride, padding=0, stride=stride))
-            if normalization == 'batchnorm':
+        if normalization != "none":
+            ops.append(
+                nn.Conv3d(n_filters_in, n_filters_out, stride, padding=0, stride=stride)
+            )
+            if normalization == "batchnorm":
                 ops.append(nn.BatchNorm3d(n_filters_out))
-            elif normalization == 'groupnorm':
+            elif normalization == "groupnorm":
                 ops.append(nn.GroupNorm(num_groups=16, num_channels=n_filters_out))
-            elif normalization == 'instancenorm':
+            elif normalization == "instancenorm":
                 ops.append(nn.InstanceNorm3d(n_filters_out))
             else:
                 assert False
         else:
-            ops.append(nn.Conv3d(n_filters_in, n_filters_out, stride, padding=0, stride=stride))
+            ops.append(
+                nn.Conv3d(n_filters_in, n_filters_out, stride, padding=0, stride=stride)
+            )
 
         ops.append(nn.ReLU(inplace=True))
 
@@ -110,22 +114,30 @@ class DownsamplingConvBlock(nn.Module):
 
 
 class UpsamplingDeconvBlock(nn.Module):
-    def __init__(self, n_filters_in, n_filters_out, stride=2, normalization='none'):
+    def __init__(self, n_filters_in, n_filters_out, stride=2, normalization="none"):
         super(UpsamplingDeconvBlock, self).__init__()
 
         ops = []
-        if normalization != 'none':
-            ops.append(nn.ConvTranspose3d(n_filters_in, n_filters_out, stride, padding=0, stride=stride))
-            if normalization == 'batchnorm':
+        if normalization != "none":
+            ops.append(
+                nn.ConvTranspose3d(
+                    n_filters_in, n_filters_out, stride, padding=0, stride=stride
+                )
+            )
+            if normalization == "batchnorm":
                 ops.append(nn.BatchNorm3d(n_filters_out))
-            elif normalization == 'groupnorm':
+            elif normalization == "groupnorm":
                 ops.append(nn.GroupNorm(num_groups=16, num_channels=n_filters_out))
-            elif normalization == 'instancenorm':
+            elif normalization == "instancenorm":
                 ops.append(nn.InstanceNorm3d(n_filters_out))
             else:
                 assert False
         else:
-            ops.append(nn.ConvTranspose3d(n_filters_in, n_filters_out, stride, padding=0, stride=stride))
+            ops.append(
+                nn.ConvTranspose3d(
+                    n_filters_in, n_filters_out, stride, padding=0, stride=stride
+                )
+            )
 
         ops.append(nn.ReLU(inplace=True))
 
@@ -137,19 +149,21 @@ class UpsamplingDeconvBlock(nn.Module):
 
 
 class Upsampling(nn.Module):
-    def __init__(self, n_filters_in, n_filters_out, stride=2, normalization='none'):
+    def __init__(self, n_filters_in, n_filters_out, stride=2, normalization="none"):
         super(Upsampling, self).__init__()
 
         ops = []
-        ops.append(nn.Upsample(scale_factor=stride, mode='trilinear',align_corners=False))
+        ops.append(
+            nn.Upsample(scale_factor=stride, mode="trilinear", align_corners=False)
+        )
         ops.append(nn.Conv3d(n_filters_in, n_filters_out, kernel_size=3, padding=1))
-        if normalization == 'batchnorm':
+        if normalization == "batchnorm":
             ops.append(nn.BatchNorm3d(n_filters_out))
-        elif normalization == 'groupnorm':
+        elif normalization == "groupnorm":
             ops.append(nn.GroupNorm(num_groups=16, num_channels=n_filters_out))
-        elif normalization == 'instancenorm':
+        elif normalization == "instancenorm":
             ops.append(nn.InstanceNorm3d(n_filters_out))
-        elif normalization != 'none':
+        elif normalization != "none":
             assert False
         ops.append(nn.ReLU(inplace=True))
 
@@ -161,35 +175,76 @@ class Upsampling(nn.Module):
 
 
 class VNet(nn.Module):
-    def __init__(self, n_channels=3, n_classes=2, n_filters=16, normalization='none', has_dropout=False):
+    def __init__(
+        self,
+        n_channels=3,
+        n_classes=2,
+        n_filters=16,
+        normalization="none",
+        has_dropout=False,
+    ):
         super(VNet, self).__init__()
         self.has_dropout = has_dropout
 
-        self.block_one = ConvBlock(1, n_channels, n_filters, normalization=normalization)
-        self.block_one_dw = DownsamplingConvBlock(n_filters, 2 * n_filters, normalization=normalization)
+        self.block_one = ConvBlock(
+            1, n_channels, n_filters, normalization=normalization
+        )
+        self.block_one_dw = DownsamplingConvBlock(
+            n_filters, 2 * n_filters, normalization=normalization
+        )
 
-        self.block_two = ConvBlock(2, n_filters * 2, n_filters * 2, normalization=normalization)
-        self.block_two_dw = DownsamplingConvBlock(n_filters * 2, n_filters * 4, normalization=normalization)
+        self.block_two = ConvBlock(
+            2, n_filters * 2, n_filters * 2, normalization=normalization
+        )
+        self.block_two_dw = DownsamplingConvBlock(
+            n_filters * 2, n_filters * 4, normalization=normalization
+        )
 
-        self.block_three = ConvBlock(3, n_filters * 4, n_filters * 4, normalization=normalization)
-        self.block_three_dw = DownsamplingConvBlock(n_filters * 4, n_filters * 8, normalization=normalization)
+        self.block_three = ConvBlock(
+            3, n_filters * 4, n_filters * 4, normalization=normalization
+        )
+        self.block_three_dw = DownsamplingConvBlock(
+            n_filters * 4, n_filters * 8, normalization=normalization
+        )
 
-        self.block_four = ConvBlock(3, n_filters * 8, n_filters * 8, normalization=normalization)
-        self.block_four_dw = DownsamplingConvBlock(n_filters * 8, n_filters * 16, normalization=normalization)
+        self.block_four = ConvBlock(
+            3, n_filters * 8, n_filters * 8, normalization=normalization
+        )
+        self.block_four_dw = DownsamplingConvBlock(
+            n_filters * 8, n_filters * 16, normalization=normalization
+        )
 
-        self.block_five = ConvBlock(3, n_filters * 16, n_filters * 16, normalization=normalization)
-        self.block_five_up = UpsamplingDeconvBlock(n_filters * 16, n_filters * 8, normalization=normalization)
+        self.block_five = ConvBlock(
+            3, n_filters * 16, n_filters * 16, normalization=normalization
+        )
+        self.block_five_up = UpsamplingDeconvBlock(
+            n_filters * 16, n_filters * 8, normalization=normalization
+        )
 
-        self.block_six = ConvBlock(3, n_filters * 8, n_filters * 8, normalization=normalization)
-        self.block_six_up = UpsamplingDeconvBlock(n_filters * 8, n_filters * 4, normalization=normalization)
+        self.block_six = ConvBlock(
+            3, n_filters * 8, n_filters * 8, normalization=normalization
+        )
+        self.block_six_up = UpsamplingDeconvBlock(
+            n_filters * 8, n_filters * 4, normalization=normalization
+        )
 
-        self.block_seven = ConvBlock(3, n_filters * 4, n_filters * 4, normalization=normalization)
-        self.block_seven_up = UpsamplingDeconvBlock(n_filters * 4, n_filters * 2, normalization=normalization)
+        self.block_seven = ConvBlock(
+            3, n_filters * 4, n_filters * 4, normalization=normalization
+        )
+        self.block_seven_up = UpsamplingDeconvBlock(
+            n_filters * 4, n_filters * 2, normalization=normalization
+        )
 
-        self.block_eight = ConvBlock(2, n_filters * 2, n_filters * 2, normalization=normalization)
-        self.block_eight_up = UpsamplingDeconvBlock(n_filters * 2, n_filters, normalization=normalization)
+        self.block_eight = ConvBlock(
+            2, n_filters * 2, n_filters * 2, normalization=normalization
+        )
+        self.block_eight_up = UpsamplingDeconvBlock(
+            n_filters * 2, n_filters, normalization=normalization
+        )
 
-        self.block_nine = ConvBlock(1, n_filters, n_filters, normalization=normalization)
+        self.block_nine = ConvBlock(
+            1, n_filters, n_filters, normalization=normalization
+        )
         self.out_conv = nn.Conv3d(n_filters, n_classes, 1, padding=0)
 
         self.dropout = nn.Dropout3d(p=0.5, inplace=False)
@@ -244,18 +299,17 @@ class VNet(nn.Module):
         if self.has_dropout:
             x9 = self.dropout(x9)
         out = self.out_conv(x9)
-        return feature,out
-
+        return feature, out
 
     def forward(self, input, turnoff_drop=False):
         if turnoff_drop:
             has_dropout = self.has_dropout
             self.has_dropout = False
         features = self.encoder(input)
-        feature,out = self.decoder(features)
+        feature, out = self.decoder(features)
         if turnoff_drop:
             self.has_dropout = has_dropout
-        return feature,out
+        return feature, out
 
     # def __init_weight(self):
     #     for m in self.modules():

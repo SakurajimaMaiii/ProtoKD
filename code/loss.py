@@ -8,7 +8,9 @@ def dice_loss(predict, target):
     target = target.float()
     smooth = 1e-5
     intersect = torch.sum(predict * target)
-    dice = (2 * intersect + smooth) / (torch.sum(target * target) + torch.sum(predict * predict) + smooth)
+    dice = (2 * intersect + smooth) / (
+        torch.sum(target * target) + torch.sum(predict * predict) + smooth
+    )
     loss = 1.0 - dice
     return loss
 
@@ -41,7 +43,7 @@ class DiceLoss(nn.Module):
         target = self.one_hot_encode(target)
         if weight is None:
             weight = [1] * self.n_classes
-        assert inputs.shape == target.shape, 'size must match'
+        assert inputs.shape == target.shape, "size must match"
         class_wise_dice = []
         loss = 0.0
         for i in range(self.n_classes):
@@ -56,6 +58,7 @@ class RobustCrossEntropyLoss(nn.CrossEntropyLoss):
     """
     this is just a compatibility layer because my target tensor is float and has an extra dimension
     """
+
     def forward(self, input: Tensor, target: Tensor) -> Tensor:
         if len(target.shape) == len(input.shape):
             assert target.shape[1] == 1
@@ -73,7 +76,7 @@ class WeightedCrossEntropyLoss(nn.Module):
         weight = []
         for c in range(self.num_classes):
             weight_c = torch.sum(target == c).float()
-            #print("weightc for c",c,weight_c)
+            # print("weightc for c",c,weight_c)
             weight.append(weight_c)
         weight = torch.tensor(weight).to(target.device)
         weight = 1 - weight / (torch.sum(weight))
@@ -97,16 +100,15 @@ def softmax_dice_loss(input_logits, target_logits):
     return mean_dice
 
 
-
 class DiceCeLoss(nn.Module):
     # predict : output of model (i.e. no softmax)[N,C,*]
     # target : gt of img [N,1,*]
-    def __init__(self, num_classes, alpha=1.0,weighted=True):
-        '''
+    def __init__(self, num_classes, alpha=1.0, weighted=True):
+        """
         calculate loss:
             celoss + alpha*celoss
             alpha : default is 1
-        '''
+        """
         super().__init__()
         self.alpha = alpha
         self.num_classes = num_classes
@@ -123,7 +125,7 @@ class DiceCeLoss(nn.Module):
         diceloss = self.diceloss(predict, label)
         celoss = self.celoss(predict, label)
         loss = celoss + self.alpha * diceloss
-        return diceloss,celoss,loss
+        return diceloss, celoss, loss
 
 
 def softmax_mse_loss(input_logits, target_logits):
@@ -138,8 +140,9 @@ def softmax_mse_loss(input_logits, target_logits):
     input_softmax = F.softmax(input_logits, dim=1)
     target_softmax = F.softmax(target_logits, dim=1)
 
-    mse_loss = (input_softmax-target_softmax)**2
+    mse_loss = (input_softmax - target_softmax) ** 2
     return mse_loss
+
 
 def softmax_kl_loss(input_logits, target_logits):
     """Takes softmax on both sides and returns KL divergence
@@ -154,9 +157,10 @@ def softmax_kl_loss(input_logits, target_logits):
     target_softmax = F.softmax(target_logits, dim=1)
 
     # return F.kl_div(input_log_softmax, target_softmax)
-    kl_div = F.kl_div(input_log_softmax, target_softmax, reduction='none')
+    kl_div = F.kl_div(input_log_softmax, target_softmax, reduction="none")
     # mean_kl_div = torch.mean(0.2*kl_div[:,0,...]+0.8*kl_div[:,1,...])
     return kl_div
+
 
 def symmetric_mse_loss(input1, input2):
     """Like F.mse_loss but sends gradients to both directions
@@ -167,11 +171,10 @@ def symmetric_mse_loss(input1, input2):
     - Sends gradients to both input1 and input2.
     """
     assert input1.size() == input2.size()
-    return torch.mean((input1 - input2)**2)
+    return torch.mean((input1 - input2) ** 2)
 
 
-
-def prototype_loss(feature,feature_t,label,num_cls):
+def prototype_loss(feature, feature_t, label, num_cls):
     """
     match prototype simarlity map for teacher and student model
     feature/feature_t [N,C,*]
@@ -179,21 +182,28 @@ def prototype_loss(feature,feature_t,label,num_cls):
     """
     eps = 1e-5
     N = len(feature.size()) - 2
-    label = label[:,0]  #label [N,*]
+    label = label[:, 0]  # label [N,*]
     s = []
     t = []
 
-
     for i in range(num_cls):
-        mask = label==i
-        if N==3 and (torch.sum(mask,dim=(-3,-2,-1))>0).all():
-            proto_s =  torch.sum(feature*mask[:,None],dim=(-3,-2,-1))/(torch.sum(mask[:,None],dim=(-3,-2,-1))+eps)
-            proto_t =  torch.sum(feature_t*mask[:,None],dim=(-3,-2,-1))/(torch.sum(mask[:,None],dim=(-3,-2,-1))+eps)
-            proto_map_s = F.cosine_similarity(feature,proto_s[:,:,None,None,None],dim=1,eps=eps)
-            proto_map_t = F.cosine_similarity(feature_t,proto_t[:,:,None,None,None],dim=1,eps=eps)
+        mask = label == i
+        if N == 3 and (torch.sum(mask, dim=(-3, -2, -1)) > 0).all():
+            proto_s = torch.sum(feature * mask[:, None], dim=(-3, -2, -1)) / (
+                torch.sum(mask[:, None], dim=(-3, -2, -1)) + eps
+            )
+            proto_t = torch.sum(feature_t * mask[:, None], dim=(-3, -2, -1)) / (
+                torch.sum(mask[:, None], dim=(-3, -2, -1)) + eps
+            )
+            proto_map_s = F.cosine_similarity(
+                feature, proto_s[:, :, None, None, None], dim=1, eps=eps
+            )
+            proto_map_t = F.cosine_similarity(
+                feature_t, proto_t[:, :, None, None, None], dim=1, eps=eps
+            )
             s.append(proto_map_s.unsqueeze(1))
             t.append(proto_map_t.unsqueeze(1))
-    sim_map_s = torch.cat(s,dim=1)
-    sim_map_t = torch.cat(t,dim=1)
-    loss = torch.mean((sim_map_s-sim_map_t)**2)
-    return sim_map_s,sim_map_t,loss
+    sim_map_s = torch.cat(s, dim=1)
+    sim_map_t = torch.cat(t, dim=1)
+    loss = torch.mean((sim_map_s - sim_map_t) ** 2)
+    return sim_map_s, sim_map_t, loss

@@ -83,7 +83,7 @@ If this code or ProtoKD is useful for your research, please consider citing our 
 ## Contact
 If you have any question, please contact bit.ybws@gmail.com
 ## 📜 Papers of missing modality in medical image analysis
-We collected some papers about missing modality in medical image analysis, which may help people who are interested in this topic. Papers with public code are __highlighted__. If I miss some important papers, feel free to tell me.
+We have compiled a collection of papers addressing the issue of missing modality in medical image analysis. This resource aims to assist researchers and practitioners interested in this topic. **Papers with publicly available code have been highlighted.** If you're aware of any significant papers that we may have overlooked, please don't hesitate to inform us.
 * __Learning with Privileged Multimodal Knowledge for Unimodal Segmentation, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/cchen-cc/PMKL)__  
 * __D2-Net: Dual Disentanglement Network for Brain Tumor Segmentation with Missing Modalities, [IEEE TMI 2022](https://ieeexplore.ieee.org/document/9567675), [code](https://github.com/CityU-AIM-Group/D2Net)__ 
 * __mmFormer: Multimodal Medical Transformer for Incomplete Multimodal Learning of Brain Tumor Segmentation, MICCAI 2022, [arXiv](https://arxiv.org/abs/2206.02425), [code](https://github.com/YaoZhang93/mmFormer)__

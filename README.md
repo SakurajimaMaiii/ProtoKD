@@ -107,5 +107,5 @@ We have compiled a collection of papers addressing the issue of missing modality
 * __M$`^2`$FTrans: Modality-Masked Fusion Transformer for Incomplete Multi-Modality Brain Tumor Segmentation, [IEEE JBHI 2023](https://ieeexplore.ieee.org/document/10288381), [code](https://github.com/Jun-Jie-Shi/M2FTrans).__
 * Bootstrapping Chest CT Image Understanding by Distilling Knowledge from X-ray Expert Models, [CVPR 2024](https://openaccess.thecvf.com/content/CVPR2024/html/Cao_Bootstrapping_Chest_CT_Image_Understanding_by_Distilling_Knowledge_from_X-ray_CVPR_2024_paper.html)
 * PASSION: Towards Effective Incomplete Multi-Modal Medical Image Segmentation with Imbalanced Missing Rates, [ACM MM 2024](https://dl.acm.org/doi/abs/10.1145/3664647.3681543)
-* A Vision Transformer-Based Framework for Knowledge Transfer From Multi-Modal to Mono-Modal Lymphoma Subtyping Models, [IEE JBHI 2024](https://ieeexplore.ieee.org/abstract/document/10543042)
+* A Vision Transformer-Based Framework for Knowledge Transfer From Multi-Modal to Mono-Modal Lymphoma Subtyping Models, [IEEE JBHI 2024](https://ieeexplore.ieee.org/abstract/document/10543042)
 * MedMAP: Promoting Incomplete Multi-modal Brain Tumor Segmentation with Alignment, [arXiv 2024](https://arxiv.org/abs/2408.09465)

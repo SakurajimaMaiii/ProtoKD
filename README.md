@@ -21,9 +21,9 @@ tqdm==4.65.0
 ```
 ## Dataset
 Please download BraTS2018 training set from [here](https://www.med.upenn.edu/sbia/brats2018.html).
-For preprocessing, please change `path` (Line35) in `preprocess.py`, and
-```
-cd code/
+For preprocessing
+```bash
+cd code
 python preprocess.py
 ```
 the preprocessed data will be organzied as:
@@ -38,16 +38,16 @@ the preprocessed data will be organzied as:
 ```
 ## Training
 First, train a teacher model
-```
+```bash
 python pretrain.py --log_dir ../log/teachermodel
 ```
 For baseline (unimodal in paper),
-```
+```bash
 python train_baseline.py --log_dir ../log/unimodal_modality0 --modality 0
 ```
 where modality=0,1,2,3 denotes using T1/T2/T1ce/Falir images for training.  
 For ProtoKD (our method)
-```
+```bash
 python train_protokd.py --modality 0 --log_dir ../log/protokd_modality0
 ```
 ## Test
